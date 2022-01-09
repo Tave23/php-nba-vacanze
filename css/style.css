@@ -1,0 +1,45 @@
+*{
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+   font-family: Verdana, sans-serif;
+}
+
+header{
+   height: 50px;
+   background: gray;
+   line-height: 50px;
+   padding-left: 20px;
+}
+
+main{
+   height: calc(100vh - 50px);
+   background-color: lightgray;
+   overflow: scroll;
+}
+
+.match-container{
+   width: 75%;
+   margin: 50px auto;
+   height: 150px;
+   line-height: 140px;
+   background-color: gray;
+   border: 3px solid black;
+   justify-content: space-around;
+   display: flex;
+   padding: 5px 0;
+}
+
+.stadium{
+   line-height: 20px;
+   text-align: center;
+   margin: auto 0;
+}
+
+.stadium .city{
+   font-size: 13px;
+} 
+
+.stadium .arena{
+   font-weight: 600;
+}
