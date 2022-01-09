@@ -10,6 +10,11 @@ header{
    background: gray;
    line-height: 50px;
    padding-left: 20px;
+   display: flex;
+}
+
+header h1{
+   margin-right: 50px;
 }
 
 main{

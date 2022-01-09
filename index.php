@@ -3,7 +3,9 @@
 define('__ROOT__', dirname(dirname(__FILE__)));
 require_once(__ROOT__.'/php-nba-vacanze/db/database.php'); 
 
+$filteredMatches = [];
 
+$home_team = $_GET['home_team'];
 
 ?>
 <!DOCTYPE html>
@@ -19,58 +21,104 @@ require_once(__ROOT__.'/php-nba-vacanze/db/database.php');
 
    <header>
       <h1>NBA Matches</h1>
+
+      <p><?php echo 'il team scelto è ' . $home_team ?></p>
    </header>
 
    <main>
-      
+
       <?php foreach ($matches as $singleMatch) { ?>
+
+         <?php if ($home_team == '') { ?>
          
-         <div class="match-container">
+            <div class="match-container">
 
-            <!-- nome squadra casa -->
-            <p>
-               <?php echo $singleMatch['home_team']['city'] . ' ' ; echo $singleMatch['home_team']['nickname'] ?>
-            </p>
-
-            <!-- logo squadra casa -->
-            <img src="img/<?php echo $singleMatch['home_team']['logo'] ?>" alt="">
-
-            <!-- punteggio squadra casa -->
-            <h3>
-               <?php echo $singleMatch['home_team']['score']?>
-            </h3>
-
-            <!-- stadio -->
-            <div class="stadium">
-
-               <p class="arena">
-                  <?php echo $singleMatch['arena']?>
+               <!-- nome squadra casa -->
+               <p>
+                  <?php echo $singleMatch['home_team']['city'] . ' ' ; echo $singleMatch['home_team']['nickname'] ?>
                </p>
-               <p class="city">
-                  <?php echo $singleMatch['city']?>
+
+               <!-- logo squadra casa -->
+               <img src="img/<?php echo $singleMatch['home_team']['logo'] ?>" alt="">
+
+               <!-- punteggio squadra casa -->
+               <h3>
+                  <?php echo $singleMatch['home_team']['score']?>
+               </h3>
+
+               <!-- stadio -->
+               <div class="stadium">
+
+                  <p class="arena">
+                     <?php echo $singleMatch['arena']?>
+                  </p>
+                  <p class="city">
+                     <?php echo $singleMatch['city']?>
+                  </p>
+
+               </div>
+
+               <!-- punteggio squadra ospite -->
+               <h3>
+                  <?php echo $singleMatch['away_team']['score']?>
+               </h3>
+
+               <!-- logo squadra ospite -->
+               <img src="img/<?php echo $singleMatch['away_team']['logo'] ?>" alt="">
+
+               <!-- nome squadra ospite -->
+               <p>
+                  <?php echo $singleMatch['away_team']['city'] . ' ' ; echo $singleMatch['away_team']['nickname'] ?>
                </p>
 
             </div>
 
-            <!-- punteggio squadra ospite -->
-            <h3>
-               <?php echo $singleMatch['away_team']['score']?>
-            </h3>
+      <?php } elseif ($singleMatch['home_team']['nickname'] == $home_team) { ?>
+      
+         <div class="match-container">
 
-            <!-- logo squadra ospite -->
-            <img src="img/<?php echo $singleMatch['away_team']['logo'] ?>" alt="">
+               <!-- nome squadra casa -->
+               <p>
+                  <?php echo $singleMatch['home_team']['city'] . ' ' ; echo $singleMatch['home_team']['nickname'] ?>
+               </p>
 
-            <!-- nome squadra ospite -->
-            <p>
-               <?php echo $singleMatch['away_team']['city'] . ' ' ; echo $singleMatch['away_team']['nickname'] ?>
-            </p>
+               <!-- logo squadra casa -->
+               <img src="img/<?php echo $singleMatch['home_team']['logo'] ?>" alt="">
 
-            
+               <!-- punteggio squadra casa -->
+               <h3>
+                  <?php echo $singleMatch['home_team']['score']?>
+               </h3>
 
-            
+               <!-- stadio -->
+               <div class="stadium">
 
+                  <p class="arena">
+                     <?php echo $singleMatch['arena']?>
+                  </p>
+                  <p class="city">
+                     <?php echo $singleMatch['city']?>
+                  </p>
 
-         </div>
+               </div>
+
+               <!-- punteggio squadra ospite -->
+               <h3>
+                  <?php echo $singleMatch['away_team']['score']?>
+               </h3>
+
+               <!-- logo squadra ospite -->
+               <img src="img/<?php echo $singleMatch['away_team']['logo'] ?>" alt="">
+
+               <!-- nome squadra ospite -->
+               <p>
+                  <?php echo $singleMatch['away_team']['city'] . ' ' ; echo $singleMatch['away_team']['nickname'] ?>
+               </p>
+
+            </div>
+
+      <?php } ?>
+
 
       <?php } ?>
 
